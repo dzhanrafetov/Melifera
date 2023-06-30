@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>MELLIFERA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/h1.jpg">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/plugins/testimonial/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/plugins/testimonial/css/owl.theme.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css" />
+    <script src="https://kit.fontawesome.com/d5c9da6fa9.js" crossorigin="anonymous"></script>
+
+</head>
+<body class="bg-white">
+
+<div class="box">
+
+    <div class="container">
+        <div class="top">
+            <header>Регистрация</header>
+        </div>
+
+        <form action="#" th:action="@{/v1/user/createUserForm}" th:object="${user}" method="post">
+
+            <div class="input-field">
+
+                <input type="text" id="username " class="input" name="username" placeholder="Потребителско име" th:field="*{username}" required/>
+                <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+                <i class='bx bx-user'></i>
+
+            </div>
+
+            <div class="input-field">
+
+                <input type="email" class="input" placeholder="Имейл" id="mail" th:field="*{mail}" required/>
+                <i class='bx bx-lock-alt'></i>
+
+                <span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}"></span>
+            </div>
+            <div class="input-field">
+                <input type="password" class="input" placeholder="Парола" id="password" th:field="*{password}"
+                       required/>
+                <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+            </div>
+
+            <div class="input-field">
+                <input type="password" class="input" placeholder="Потвърждаване на парола" id="confirmPassword"
+                       th:field="*{password}" required/>
+                <i class='bx bx-lock-alt'></i>
+
+                <span id="passwordMatchError" style="display:none;color:red;">Паролите не съвпадат</span>
+            </div>
+
+            <div class="input-field">
+                <input type="submit" class="submit" value="Регистрирай се" id="">
+
+            </div>
+        </form>
+
+        <script>
+            var password = document.getElementById("password");
+            var confirmPassword = document.getElementById("confirmPassword");
+            var passwordMatchError = document.getElementById("passwordMatchError");
+            var submitBtn = document.getElementById("submitBtn");
+
+            function validatePasswords() {
+                if (password.value != confirmPassword.value) {
+                    passwordMatchError.style.display = "block";
+                    submitBtn.disabled = true;
+                } else {
+                    passwordMatchError.style.display = "none";
+                    submitBtn.disabled = false;
+                }
+            }
+
+            confirmPassword.addEventListener("keyup", validatePasswords);
+        </script>
+
+    </div>
+</div>
+</body>
+
+<div>
+
+
+</div>
+
+</html>

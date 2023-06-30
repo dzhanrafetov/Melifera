@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>MELLIFERA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/h1.jpg">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/plugins/testimonial/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/plugins/testimonial/css/owl.theme.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css" />
+    <script src="https://kit.fontawesome.com/d5c9da6fa9.js" crossorigin="anonymous"></script>
+
+</head>
+
+</script>
+<body class="bg-white">
+
+<div class="box">
+
+    <div class="container">
+        <div class="top">
+            <header>Регистрация</header>
+        </div>
+
+        <form action="#" th:action="@{/v1/user/createUserDetailsForm}" th:object="${userDetails}" method="post">
+            <div class="input-field">
+
+
+                <input type="text" id="address" class="input" placeholder="Адрес" th:field="*{address}" required/>
+                <i class='bx bx-user'></i>
+                <!--                <span th:if="${#fields.hasErrors('username')}" th:errors="*{ci}"></span>-->
+            </div>
+
+            <div class="input-field">
+
+
+                <input type="text" id="city" class="input" placeholder="Град" th:field="*{city}" required/>
+                <i class='bx bx-user'></i>
+                <!--                <span th:if="${#fields.hasErrors('username')}" th:errors="*{ci}"></span>-->
+            </div>
+            <div class="input-field">
+
+
+                <input type="text" id="state" class="input" placeholder="Област" th:field="*{state}" required/>
+                <i class='bx bx-user'></i>
+                <!--                <span th:if="${#fields.hasErrors('username')}" th:errors="*{ci}"></span>-->
+            </div>
+
+            <div class="input-field">
+
+
+                <input type="text" id="postCode" class="input" placeholder="Пощенски код" th:field="*{postCode}" required/>
+                <i class='bx bx-user'></i>
+                <!--                <span th:if="${#fields.hasErrors('username')}" th:errors="*{ci}"></span>-->
+            </div>
+
+
+            <div class="input-field">
+
+
+                <input type="text" id="country" class="input" placeholder="Държава" th:field="*{country}" required/>
+                <i class='bx bx-user'></i>
+                <!--                <span th:if="${#fields.hasErrors('username')}" th:errors="*{ci}"></span>-->
+            </div>
+
+            <div class="input-field">
+
+
+                <input type="text" id="phonenumber" class="input" placeholder="Телефон" th:field="*{phoneNumber}"
+                       required/>
+                <i class='bx bx-user'></i>
+                <!--                <span th:if="${#fields.hasErrors('username')}" th:errors="*{ci}"></span>-->
+            </div>
+
+
+            <div class="input-field">
+                <input type="submit" class="submit" value="Регистирай се" id=""
+                       onclick="return confirm('Ще изпратим имейл за потвърджаване ');" />
+            </div>
+        </form>
+
+
+    </div>
+</div>
+</body>
+
+<div>
+
+
+</div>
+
+</html>

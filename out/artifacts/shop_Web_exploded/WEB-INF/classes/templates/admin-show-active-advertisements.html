@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>MELLIFERA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/h1.jpg">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/plugins/testimonial/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/plugins/testimonial/css/owl.theme.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <script src="https://kit.fontawesome.com/d5c9da6fa9.js" crossorigin="anonymous"></script>
+
+</head>
+<body class="bg-white">
+<header>
+    <th:block th:include="fragments/admin-header :: header"></th:block>
+
+</header>
+<!--  ************************* Page Title Starts Here ************************** -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+
+        </div>
+    </div>
+</div>
+
+<!-- ******************** About US Starts Here ******************* -->
+
+<div class="container-fluid products big-padding px-3 bg-honey">
+    <div class="container-xl">
+        <div class="section-title row">
+            <h2 class="fs-1 fw-bold">Активни Обяви</h2>
+        </div>
+        <div class="row">
+            <!-- iterate over the advertisements -->
+            <div th:each="advertisement : ${advertisements}" class="col-lg-3 col-md-4 mb-4" >
+
+                <a href="#">
+                    <div class="product bg-white p-4 text-center shadow-md">
+                        <!-- display the advertisement image -->
+                        <img th:src="@{${advertisement.images[0].url}}" alt="noimg" />
+
+
+                        <!--<img src="/images/uploads/27-admin/33de0164-b2f5-470e-8323-790113e2fa76/f.jpeg" alt="">-->
+                        <div class="d-inline-block">
+
+                            <h4 class="fw-bolder fs-4 mt-47" th:text="${advertisement.title}"></h4>
+
+
+                            <h4 class="fw-bolder fs-5 mt-54"> <span th:text="${advertisement.userdetails[0].city + '/'
+                 + advertisement.userdetails[0].state }"></span></h4>
+
+
+
+                            <h4 class="fw-bolder fs-5 mt-54"> <span th:text="${advertisement.price+ 'лв'}"></span></h4>
+
+
+                        </div>
+                        <div class="d-inline-block mt-3">
+                            <a th:href="@{/v1/advertisement/admin/deactivateAdvertisement-tl/{id}(id=${advertisement.advertisementId})}">
+                                <button class="btn btn-primary px-5">Деактивирай Обява</button>
+                            </a>
+
+
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<footer>
+    <th:block th:include="fragments/footer :: footer"></th:block>
+
+</footer>
+</body>
+
+
+</html>

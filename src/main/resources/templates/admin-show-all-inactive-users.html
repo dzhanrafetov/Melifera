@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>MELLIFERA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/h1.jpg">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/plugins/testimonial/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/plugins/testimonial/css/owl.theme.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <script src="https://kit.fontawesome.com/d5c9da6fa9.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-white">
+<header>
+    <th:block th:include="fragments/admin-header :: header"></th:block>
+</header>
+
+<!-- ************************* Page Title Starts Here ************************** -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h2 class="text-start">Деактивирани потребители</h2>
+
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4" th:each="user : ${inActiveUsers}">
+            <div class="serv-cove rounded bg-white p-2">
+                <img src="/images/blog/potrebiteli.jpg" alt="">
+                <div class="p-2">
+                    <h5 class="mt-3 fs-7 fw-bold" th:text="${'ид: '+user.id}"></h5>
+                    <h5 class="mt-3 fs-7 fw-bold" th:text="${'потребителско име: '+user.username}"></h5>
+                    <h5 class="mt-3 fs-7 fw-bold"
+                        th:text="${user.active ? 'статус: '+'активен' : 'неактивен'}"
+                        th:classappend="${user.active} ? 'true' : 'false'">
+                    </h5>
+                    <h5 class="mt-3 fs-7 fw-bold" th:text="'имейл: '+${user.mail}"></h5>
+                    <!--                    <h5 class="mt-3 fs-7 fw-bold" th:text="${user.userDetails[0].city}"></h5>-->
+
+
+                    <!--                    <a href="#" th:href="@{/v1/advertisement/all/advertisements-by-category/{categoryId}(categoryId=${category.id})}" class="btn btn-primary mt-3">Show Advertisements</a>-->
+                </div>
+                <div class="d-inline-block mt-3">
+
+                    <a th:href="@{/v1/user/admin/activateUserById/{id}(id=${user.id})}">
+                        <button class="btn btn-primary px-5" onclick="return confirm('искате ли да се активира този потребител');">Активирай</button>
+                    </a>
+
+                </div>
+                <div class="d-inline-block mt-3">
+
+                    <a th:href="@{/v1/user/admin/delete_UserById/{id}(id=${user.id})}">
+                        <button class="btn btn-primary px-5" onclick="return confirm('искате ли да се изтрие този потребител');">Изтрий</button>
+                    </a>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <th:block th:include="fragments/footer :: footer"></th:block>
+</footer>
+
+<script src="assets/js/jquery-3.2.1.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/plugins/scroll-fixed/jquery-scrolltofixed-min.js"></script>
+<script src="assets/plugins/testimonial/js/owl.carousel.min.js"></script>
+<script src="assets/js/script.js"></script>
+</body>
+</html>
