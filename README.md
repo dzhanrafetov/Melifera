@@ -1,5 +1,4 @@
 # Melifera Ecommerce API 
-   # `Spring Boot and Thymeleaf Ecommerce Application`
 
 
 ## Summary
